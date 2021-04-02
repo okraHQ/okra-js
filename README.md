@@ -1,4 +1,4 @@
-# Okra NPM
+# Okra JS
 
 JS library for implementing Okra widget
 
