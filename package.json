@@ -1,11 +1,11 @@
 {
   "name": "okra-js",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "JS library for implementing Okra widget",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/okraHQ/okrajs.git"
+    "url": "git+https://github.com/okraHQ/okra-js.git"
   },
   "keywords": [
     "Okra",
@@ -21,7 +21,7 @@
   "author": "Laniran Peter <laniranpeter@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/okraHQ/okrajs/issues"
+    "url": "https://github.com/okraHQ/okra-js/issues"
   },
-  "homepage": "https://github.com/okraHQ/okrajs#readme"
+  "homepage": "https://github.com/okraHQ/okra-js#readme"
 }
