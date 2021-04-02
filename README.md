@@ -36,6 +36,7 @@ Okra.buildWithOptions({
     app_id: ''// app_id from your app builder
     key: '', // Your key from the Okra dashboard
     token: '', // Your token from the okra dashboard
+    products: ['auth','identity','balance','transactions', 'income'], //in lowercase
     onSuccess: function(data){
         console.log('options success', data)
     },
