@@ -1,7 +1,7 @@
 # Okra JS
 ![alt text](https://files.readme.io/41dcda7-react-native-black.svg)
 
-JS library for implementing the OkraJS widget - OkraJS is a safe and secure web drop-in module and this library provides a front-end web (also available in [iOS](https://github.com/okraHQ/okra-ios-sdk) and [Android](https://github.com/okraHQ/okra-android-sdk)) SDK for [account authentication](https://docs.okra.ng/docs/widget-properties) and [payment initiation](https://docs.okra.ng/docs/creating-a-charge) through [Okra](https://okra.ng).for each bank that[Okra supports](https://docs.okra.ng/docs/bank-coverage). 
+JS library for implementing the OkraJS widget - OkraJS is a safe and secure web drop-in module and this library provides a front-end web (also available in [iOS](https://github.com/okraHQ/okra-ios-sdk) and [Android](https://github.com/okraHQ/okra-android-sdk)) SDK for [account authentication](https://docs.okra.ng/docs/widget-properties) and [payment initiation](https://docs.okra.ng/docs/creating-a-charge) for each bank that Okra [supports](https://docs.okra.ng/docs/bank-coverage). 
 
 ## Before getting started
 - Checkout our [get started guide](https://docs.okra.ng/docs/get-started-with-okra) to create your developer account and retrieve your Client Token, API Keys, and Private Keys.
