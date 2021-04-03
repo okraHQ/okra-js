@@ -8,7 +8,6 @@ Checkout the [widget flow](https://okra.ng/) to view how the Okra Widget works. 
 
 ## Before getting started
 - Checkout our [get started guide](https://docs.okra.ng/docs/get-started-with-okra) to create your developer account and retrieve your Client Token, API Keys, and Private Keys.
-- Create an App with out App Builder to obtain an `app_id` to track analytics on your dashabord.
 - Create a [sandbox customer](https://docs.okra.ng/docs/creating-sandbox-customers), so you can get connecting immediately. 
 
 ## buildWithShortURL
