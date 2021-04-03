@@ -11,7 +11,7 @@ Checkout the [widget flow](https://okra.ng/) to view how the Okra Widget works. 
 - Create a [sandbox customer](https://docs.okra.ng/docs/creating-sandbox-customers), so you can get connecting immediately. 
 
 ## buildWithShortURL
-- If you are using the `buildWithShortURL` version, you will first need to [create a link](https://docs.okra.ng/docs/widget-customization) on your dashboard, and use the short url `ref` returend at the end of the creation flow.
+- If you are using the `buildWithShortURL` version, you will first need to [create a link](https://docs.okra.ng/docs/widget-customization) on your dashboard, and use the `short url` returend at the end of the creation flow.
 
 *Bonus Points*
 - Setup [Slack Notifications](https://docs.okra.ng/docs/slack-integration) so you can see your API call statuses and re-run calls in real-time!
@@ -109,7 +109,7 @@ View a complete list of customizable options [here](https://docs.okra.ng/docs/wi
 
 |Name                   | Type           | Required            | Description         |
 |-----------------------|----------------|---------------------|---------------------|
-|  `short_url`          | `String`       | true                | Your generated url from link builder.
+|  `short_url`          | `String`       | true                | Your generated url from [link builder](https://docs.okra.ng/docs/widget-customization).
 |  `onSuccess`          | `Function`     | false               | Action to perform after widget is successful
 |  `onClose`            | `Function`     | false               | Action to perform if widget is closed
 |  `onError`            | `Function`     | false               | Action to perform on widget Error
