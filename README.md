@@ -1,6 +1,17 @@
 # Okra JS
+![alt text](https://files.readme.io/41dcda7-react-native-black.svg)
 
-JS library for implementing Okra widget
+JS library for implementing the OkraJS widget - OkraJS is a safe and secure web drop-in module and this library provides a front-end web (also available in [iOS](https://github.com/okraHQ/okra-ios-sdk) and [Android](https://github.com/okraHQ/okra-android-sdk)) SDK for [account authentication](https://docs.okra.ng/docs/widget-properties) and [payment initiation](https://docs.okra.ng/docs/creating-a-charge) through [Okra](https://okra.ng).for each bank that[Okra supports](https://docs.okra.ng/docs/bank-coverage). 
+
+## Before getting started
+- Checkout our [get started guide](https://docs.okra.ng/docs/get-started-with-okra) to create your developer account and retrieve your Client Token, API Keys, and Private Keys.
+- Create a [sandbox customer](https://docs.okra.ng/docs/creating-sandbox-customers), so you can get connecting immediately. 
+
+## buildWithShortURL
+- If you are using the `buildWithShortURL` version, you will first need to [create a link](https://docs.okra.ng/docs/widget-customization) on your dashboard, and use the short url `ref` returend at the end of the creation flow.
+
+*Bonus Points*
+- Setup [Slack Notifications](https://docs.okra.ng/docs/slack-integration) so you can see your API call statuses and re-run calls in real-time!
 
 ## Installing
 
@@ -48,7 +59,7 @@ Okra.buildWithOptions({
 // OR
 
 Okra.buildWithShortUrl({
-    short_url: '', //Your short url from the link builder
+    short_url: '', //Your short url from the link builder (https://dash.okra.ng/links)
     onSuccess: function(data){
         console.log('options success', data)
     },
@@ -68,6 +79,9 @@ Okra.buildWithShortUrl({
 |  `token `             | `String`       | true                |                     | Your token from your Okra Dashboard.
 |  `env `               | `String`       | false               |`production`         | production(live)/production-sandbox (test)
 |  `products`           | `Array`        | true                | `['Auth']`          | The Okra products you want to use with the widget.
+|  `payment`            | `Booelan`      | false               |                     | Whether you want to initiate a payment (https://docs.okra.ng/docs/payments)
+|  `charge `            | `Object`       | false               |                     | Payment charge opject (https://docs.okra.ng/docs/creating-a-charge)
+|  `products`           | `Array`        | true                | `['Auth']`          | The Okra products you want to use with the widget.
 |  `logo `              | `String(URL)`  | false               | Okra's Logo         | 
 |  `name `              | `String`       | false               | Your Company's name | Name on the widget 
 |  `color`              | `HEX   `       | false               | #3AB795             | Theme on the widget 
@@ -86,6 +100,7 @@ Okra.buildWithShortUrl({
 |  `onError`            | `Function`     | false               |                     | Action to perform on widget Error
 |  `BeforeClose`        | `Function`     | false               |                     | Action to perform before widget close
 
+View a complete list of customizable options [here](https://docs.okra.ng/docs/widget-properties)
 
 ## Okra.buildWithShortUrl Options
 
@@ -97,9 +112,11 @@ Okra.buildWithShortUrl({
 |  `onError`            | `Function`     | false               | Action to perform on widget Error
 |  `BeforeClose`        | `Function`     | false               | Action to perform before widget close
 
+## Done connecting?
+Checkout our [API Overiview](https://docs.okra.ng/docs/api-overview) and see how to use the data you've received and [other products](https://docs.okra.ng/docs/selfie-verification) you can use to create more personalized experiences for your customers!
 
-## Need more options? 
-Try our App Builder! [Click here to get started](https://dash.okra.ng/link-builder)
+## Not a developer? 
+Get started without writing a single line of code, Try our App Builder! [Click here to get started] (https://dash.okra.ng/link-builder)
 
 ## Other information
 For enquires and questions, contact
