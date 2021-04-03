@@ -8,6 +8,7 @@ Checkout the [widget flow](https://okra.ng/) to view how the Okra Widget works. 
 
 ## Before getting started
 - Checkout our [get started guide](https://docs.okra.ng/docs/get-started-with-okra) to create your developer account and retrieve your Client Token, API Keys, and Private Keys.
+- Create an App with out App Builder to obtain an `app_id` to track analytics on your dashabord.
 - Create a [sandbox customer](https://docs.okra.ng/docs/creating-sandbox-customers), so you can get connecting immediately. 
 
 ## buildWithShortURL
@@ -47,7 +48,7 @@ For others, just use
 Okra.buildWithOptions({
     name: 'Peter the Builder',
     env: 'production-sandbox',
-    app_id: ''// app_id from your app builder
+    app_id: ''// app_id from your App builder
     key: '', // Your key from the Okra dashboard
     token: '', // Your token from the okra dashboard
     products: ['auth','identity','balance','transactions', 'income'], //in lowercase
@@ -62,7 +63,7 @@ Okra.buildWithOptions({
 // OR
 
 Okra.buildWithShortUrl({
-    short_url: '', //Your short url from the link builder (https://dash.okra.ng/links)
+    short_url: '', //Your short url from the App builder (https://dash.okra.ng/links)
     onSuccess: function(data){
         console.log('options success', data)
     },
@@ -109,7 +110,7 @@ View a complete list of customizable options [here](https://docs.okra.ng/docs/wi
 
 |Name                   | Type           | Required            | Description         |
 |-----------------------|----------------|---------------------|---------------------|
-|  `short_url`          | `String`       | true                | Your generated url from [link builder](https://docs.okra.ng/docs/widget-customization).
+|  `short_url`          | `String`       | true                | Your generated url from our [App builder](https://docs.okra.ng/docs/widget-customization).
 |  `onSuccess`          | `Function`     | false               | Action to perform after widget is successful
 |  `onClose`            | `Function`     | false               | Action to perform if widget is closed
 |  `onError`            | `Function`     | false               | Action to perform on widget Error
