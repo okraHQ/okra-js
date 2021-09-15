@@ -33,7 +33,7 @@ $ yarn add okra-js
 Using CDN:
 
 ```html
-<script src="https://cdn.okra.ng/v2/bundle.js"></script>
+<script src="https://cdn.okra.ng/v3/bundle.js"></script>
 ```
 
 ## Usuage
