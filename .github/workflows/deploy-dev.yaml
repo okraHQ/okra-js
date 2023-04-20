@@ -13,15 +13,15 @@ concurrency:
 
 jobs:
 
-  deploy-infra:
-    uses: ./.github/workflows/infra-provision.yml
-    with:
-      application: js
-      environment_name: development
-    secrets: inherit
+  # deploy-infra:
+  #   uses: ./.github/workflows/infra-provision.yml
+  #   with:
+  #     application: js
+  #     environment_name: development
+  #   secrets: inherit
 
   deploy-app:
-    needs: deploy-infra
+    # needs: deploy-infra
     uses: ./.github/workflows/ecs-deploy.yml
     with:
       application: js
