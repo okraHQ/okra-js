@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       environment_name:
-        description: "Environment name (qa, staging, production)"
+        description: "Environment name (development, staging, production)"
         required: true
         type: string
 
@@ -36,7 +36,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
-
+      
       - name: Select TFC Workspace
         run: |
           #Get the workspace id
