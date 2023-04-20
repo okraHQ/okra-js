@@ -8,7 +8,7 @@ COPY . .
 FROM nginx:1.23.2-alpine as production
 # Copy built assets from `builder` image
 COPY --from=builder /okra-js /usr/share/nginx/html
-COPY template/nginx.conf /etc/nginx/conf.d/default.conf
+COPY terraform/template/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 # Start nginx
