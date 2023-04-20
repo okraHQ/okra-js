@@ -1,0 +1,38 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "okra-js-development",
+            "image": "537506409063.dkr.ecr.eu-west-3.amazonaws.com/okra-js-development:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "okra-js-development",
+                    "awslogs-region": "eu-west-3",
+                    "awslogs-stream-prefix": "development"
+                }
+            }
+        }
+    ],
+    "family": "okra-js-development",
+    "taskRoleArn": "arn:aws:iam::537506409063:role/okra-js-development-task-role",
+    "executionRoleArn": "arn:aws:iam::537506409063:role/okra-js-development-ecs-role",
+    "networkMode": "awsvpc",
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "2048"
+}
