@@ -23,7 +23,7 @@ variable "max_capacity" {
   default = {
     development = 1
     staging     = 1
-    production  = 5
+    production  = 2
   }
 }
 
