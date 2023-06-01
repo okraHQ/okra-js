@@ -1,10 +1,10 @@
-name: Deploy Staging
-run-name: Deploy to ECS (Staging) - ${{ github.ref_name }}
+name: Deploy Production
+run-name: Deploy to ECS (Production) - ${{ github.ref_name }}
 
 
 on:
   push:
-    branches: ["v4-staging"]
+    branches: ["v4-prod"]
   workflow_dispatch:
 
 concurrency:
@@ -17,7 +17,7 @@ jobs:
     uses: ./.github/workflows/infra-provision.yml
     with:
       application: js
-      environment_name: staging
+      environment_name: production
     secrets: inherit
 
   deploy-app:
@@ -25,8 +25,8 @@ jobs:
     uses: ./.github/workflows/ecs-deploy.yml
     with:
       application: js
-      environment_name: staging
+      environment_name: production
     secrets: 
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_STAGING }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGING }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
