@@ -1,6 +1,6 @@
 module "ecr_repo" {
   source      = "app.terraform.io/Okra-Inc/modules/okra//aws/containers/ecr_repository"
-  version     = "1.1.44"
+  version     = "1.2.0"
   environment = local.workspace
   service     = var.service
   tags        = local.tags
@@ -8,7 +8,7 @@ module "ecr_repo" {
 
 module "app" {
   source                    = "app.terraform.io/Okra-Inc/modules/okra//aws/ecs_apps"
-  version                   = "1.1.44"
+  version                   = "1.2.0"
   workspace                 = local.workspace
   service                   = var.service
   region                    = var.region
