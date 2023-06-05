@@ -1,0 +1,18 @@
+{
+    "version": 0,
+    "Resources": [
+        {
+            "TargetService": {
+                "Type": "AWS::ECS::Service",
+                "Properties": {
+                    "TaskDefinition": "--configured by github actions--",
+                    "LoadBalancerInfo": {
+                        "ContainerName": "okra-js-production",
+                        "ContainerPort": 80
+                    },
+                    "PlatformVersion": "LATEST"
+                }
+            }
+        }
+    ]
+}

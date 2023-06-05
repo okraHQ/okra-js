@@ -23,7 +23,7 @@ variable "max_capacity" {
   default = {
     development = 1
     staging     = 1
-    production  = 5
+    production  = 2
   }
 }
 
@@ -31,7 +31,7 @@ variable "hostname" {
   default = {
     development = "cdn.dev.okra.ng"
     staging     = "cdn.staging.okra.ng"
-    production  = "cdn.okra.ng"
+    production  = "new-cdn.okra.ng"
   }
 }
 
