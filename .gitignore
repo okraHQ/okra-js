@@ -2,3 +2,7 @@
 dist/okra.js
 tips.txt
 example/test.html
+
+
+**/.terraform
+**/*.lock.hcl

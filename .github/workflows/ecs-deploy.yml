@@ -1,0 +1,97 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment_name:
+        description: "Environment name (dev, staging, production)"
+        required: true
+        type: string
+      application:
+        description: "application name"
+        required: true
+        type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        description: "aws credentials"
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        description: "aws credentials"
+        required: true
+      SLACK_WEBHOOK_URL:
+        description: "slack notification url"
+        required: true
+      
+env:
+  AWS_REGION: "eu-west-3"
+  CLUSTER_NAME: okra-${{ inputs.environment_name }}
+  ECR_REPOSITORY: "okra-${{ inputs.application }}-${{ inputs.environment_name }}"
+  APPLICATION: "okra-${{ inputs.application }}-${{ inputs.environment_name }}"
+  AWS_JSON_FILES: terraform/templates/${{ inputs.environment_name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ github.sha }}
+          
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
+
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+      
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.AWS_JSON_FILES }}/taskdefinition.json
+          container-name: "${{ env.APPLICATION }}"
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy to Amazon ECS
+        id: ecs-deploy
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: "${{ env.APPLICATION }}"
+          cluster: ${{ env.CLUSTER_NAME }}
+          codedeploy-appspec: ${{ env.AWS_JSON_FILES }}/appspec.json
+          codedeploy-application: "${{ env.APPLICATION }}"
+          codedeploy-deployment-group: "${{ env.APPLICATION }}-deploymentgroup"
+          wait-for-service-stability: true
+
+      - name: Slack Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name:  ${{ inputs.environment_name }} Website Deployment
+          fields: repo,commit,message,eventName,ref,workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()

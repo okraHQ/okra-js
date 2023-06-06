@@ -1,0 +1,65 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      application:
+        description: "application name"
+        required: true
+        type: string
+      environment_name:
+        description: "Environment name (development, staging, production)"
+        required: true
+        type: string
+
+env:
+  WORKING_DIRECTORY: terraform
+  TF_WORKSPACE: ${{ inputs.environment_name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+      contents: read
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+      
+      - name: Select TFC Workspace
+        run: |
+          #Get the workspace id
+          workspace_id=`curl \
+            --header "Authorization: Bearer ${{ secrets.TERRAFORM_CLOUD_TOKEN }}" \
+            --header "Content-Type: application/vnd.api+json" \
+            https://app.terraform.io/api/v2/organizations/Okra-Inc/workspaces/okra-${{ inputs.application }}-${TF_WORKSPACE} \
+            |  jq -r ".[].id"`
+
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
+        continue-on-error: false

@@ -2,8 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/okra-js
-file_exists_behavior: OVERWRITE
+    destination: /home/ubuntu/v2
 hooks:
   ApplicationStart:
     - location: scripts/start_app.sh

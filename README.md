@@ -90,7 +90,8 @@ Okra.buildWithShortUrl({
 |  `color`              | `HEX   `       | false               | #3AB795             | Theme on the widget 
 |  `limit`              | `Number`       | false               | 24                  | Statement length
 |  `filter`             | `Object`       | false               |                     | Filter for widget
-|  `isCorporate`        | `Boolen`       | false               | `false`             | Corporate or Individual account
+|  `selection_type`     | `String`       | false               | `multiple`          | To select all accounts, some or none
+|  `account_type`       | `String`       | false               | `both`              | To display all account, individual or corporate
 |  `connectMessage`     | `String`       | false               |                     | Instruction to connnect account
 |  `widget_success`     | `String`       | false               |                     | Widget Success Message
 |  `widget_failed`      | `String`       | false               |                     | Widget Failed Message
