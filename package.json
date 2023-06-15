@@ -1,6 +1,6 @@
 {
   "name": "okra-js",
-  "version": "0.0.4",
+  "version": "2.0.7",
   "description": "JS library for implementing Okra widget",
   "main": "index.js",
   "repository": {
