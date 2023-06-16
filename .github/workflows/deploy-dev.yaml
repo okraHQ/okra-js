@@ -4,7 +4,7 @@ run-name: Deploy to ECS (Development) - ${{ github.ref_name }}
 
 on:
   push:
-    branches: ["v4-dev"]
+    branches: ["dev"]
   workflow_dispatch:
 
 concurrency:

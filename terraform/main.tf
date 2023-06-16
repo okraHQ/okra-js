@@ -1,6 +1,6 @@
 module "ecr_repo" {
   source      = "app.terraform.io/Okra-Inc/modules/okra//aws/containers/ecr_repository"
-  version     = "1.2.0"
+  version     = "1.3.7"
   environment = local.workspace
   service     = var.service
   tags        = local.tags
@@ -8,7 +8,7 @@ module "ecr_repo" {
 
 module "app" {
   source                    = "app.terraform.io/Okra-Inc/modules/okra//aws/ecs_apps"
-  version                   = "1.2.0"
+  version                   = "1.3.7"
   workspace                 = local.workspace
   service                   = var.service
   region                    = var.region
@@ -29,5 +29,7 @@ module "app" {
   target_autoscaling_memory = var.target_autoscaling_memory
   task_definition           = file("${path.module}/templates/${local.workspace}/taskdefinition.json")
   alb_ingress               = lookup(var.alb_ingress, local.workspace)
+  alb_ingress_ipv6          = var.alb_ingress_ipv6[local.workspace]
+
 }
 
