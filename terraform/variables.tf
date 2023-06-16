@@ -85,3 +85,11 @@ variable "alb_ingress" {
     production  = ["0.0.0.0/0"]
   }
 }
+
+variable "alb_ingress_ipv6" {
+  default = {
+    development = ["2607:fea8:591d:eb00:88a:6b6a:a7a0:cf04/128"]
+    staging     = ["2607:fea8:591d:eb00:88a:6b6a:a7a0:cf04/128"]
+    production  = ["::/0"]
+  }
+}
