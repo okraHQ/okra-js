@@ -31,7 +31,7 @@ variable "hostname" {
   default = {
     development = "cdn.dev.okra.ng"
     staging     = "cdn.staging.okra.ng"
-    production  = "cdn.okra.ng"
+    production  = "new-cdn.okra.ng"
   }
 }
 
