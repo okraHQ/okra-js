@@ -22,7 +22,7 @@ on:
         description: "slack notification url"
         required: true
       TOKEN_GITHUB:
-        required: true     
+        required: false     
       
 env:
   AWS_REGION: "eu-west-3"
